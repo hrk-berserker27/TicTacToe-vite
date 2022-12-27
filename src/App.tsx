@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { GrPowerReset } from "react-icons/gr";
 import { ImCross } from "react-icons/im";
 import { BsFillRecordCircleFill } from "react-icons/bs";
@@ -71,9 +71,7 @@ function App() {
       sumX === sum8
     ) {
       setWinner(Human);
-      //showModal
       setShowModal(true);
-      //increment the wins board
       setWins(prev => prev + 1);
     } else if (
       sumY === sum1 ||
@@ -86,15 +84,11 @@ function App() {
       sumY === sum8
     ) {
       setWinner(AI);
-      //showModal
       setShowModal(true);
-      //increment the loses board
       setLoses(prev => prev + 1);
     } else if (turn === 10 && winner === "") {
       setWinner(Draw);
-      //showModal
       setShowModal(true);
-      //Increment the tie board
       setTies(prev => prev + 1);
     }
   }, [initialArr, turn]);
@@ -156,7 +150,7 @@ function App() {
           </span>
         </div>
         <div className="turn container flex gap-2 shadow-sm justify-center align-middle text-sm py-2 rounded-md font-medium mr-4 ml-3 xl:mr-0 xl:ml-0">
-          {turn % 2 ? "X" : "O"}{" "}
+          {turn % 2 ? "X" : "O"}
           <span className="uppercase text-xsm font-bold tracking-widest leading-[1.7rem]">
             turn
           </span>
@@ -171,20 +165,20 @@ function App() {
       {/* ticTacToe */}
       <section className="container grid gap-3 xl:gap-4 grid-cols-3 grid-rows-3 w-80 xl:w-[400px] xl:h-[400px]">
         {initialArr.map((item, index) => {
-          let style;
+          let styles = {};
           if (item.type.name === "ImCross") {
-            style = {
+            styles = {
               color: "#17BEBB",
             };
           } else {
-            style = {
+            styles = {
               color: "#FEC601",
             };
           }
           return (
             <button
               key={index}
-              style={style}
+              style={styles}
               data-key={index}
               className="h-24 shadow-md text-xxl focus:outline-none rounded-md xl:h-auto input grid place-items-center"
               onClick={handleEntry}
