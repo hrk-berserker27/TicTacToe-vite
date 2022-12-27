@@ -1,0 +1,41 @@
+@media (prefers-color-scheme: light) {
+  .App {
+    background: #fff;
+  }
+  .input {
+    background: #333;
+  }
+  .turn {
+    color: #19403c;
+    background-color: #cfcfea;
+  }
+  .reset {
+    background-color: #333;
+    color: #cfcfea;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .App {
+    background-color: #03302b;
+  }
+  .input {
+    background-color: #19403c;
+  }
+  .turn {
+    color: #cfcfea;
+    background-color: #19403c;
+  }
+  .reset {
+    background-color: #cfcfea;
+  }
+  .score {
+    color: #03302b;
+  }
+}
+
+/*
+//for wins of O -> FEC601
+//for ties ->  CFCFEA
+//for wins of X -> 17BEBB
+*/
