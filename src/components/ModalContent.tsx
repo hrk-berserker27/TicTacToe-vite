@@ -11,7 +11,6 @@ type ModalProps = {
 function ModalContent({ winner, onNextRound, onClose }: ModalProps) {
     return (
         <dialog
-            role="dialog"
             className="text-center gap-1 absolute left-0 top-[45%] w-full bg-slate-800 pt-5 px-2 grid place-items-center pb-6"
         >
             {winner === "X" && (
@@ -55,3 +54,11 @@ function ModalContent({ winner, onNextRound, onClose }: ModalProps) {
 }
 
 export default ModalContent;
+/**
+ * PurgeCss:
+ * bg-amber-400 
+ * text-teal-900 
+ * bg-indigo-200 
+ * text-teal-900 
+ * text-teal-300
+ */

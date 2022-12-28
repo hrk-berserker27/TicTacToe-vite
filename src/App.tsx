@@ -18,10 +18,9 @@ function App() {
   const [ties, setTies] = useState(0);
   const [showModal, setShowModal] = useState(false);
   // Creating array to handle the entry by the gamer
-  const arr: JSX.Element[] = new Array(9);
+  const arr: string[] = new Array(9);
+  arr.fill(" ");
   const [initialArr, setArr] = useState(arr);
-  //Filling the array with Fragments
-  arr.fill(<> </>);
   //function for handling user inputs
   const handleEntry = (e: React.MouseEvent<HTMLButtonElement>) => {
     const currentButton = e.currentTarget;
@@ -31,10 +30,14 @@ function App() {
     if (currentIndex !== null && currentButton.textContent === " ") {
       let index = currentIndex.charAt(0).charCodeAt(0) - 48;
       setArr((prevArr) => {
-        let player;
-        turn % 2 === 0
-          ? (player = <BsFillRecordCircleFill />)
-          : (player = <ImCross />);
+        let player = " ";
+        if ((turn - 1) % 2 === 0) {
+          player = "X";
+        } else if ((turn - 1) % 2 !== 0) {
+          player = "O";
+        } else {
+          return prevArr;
+        }
         const lengthArr = prevArr.length;
         const leftArr = prevArr.slice(0, index);
         const rightArr = prevArr.slice(index + 1, lengthArr);
@@ -48,82 +51,56 @@ function App() {
   };
   useEffect(() => {
     let sum1, sum2, sum3, sum4, sum5, sum6, sum7, sum8;
+    //it uses previous state value to judge the winner
+    let prevPlayer = turn % 2 ? AI : Human;
+    let sum = prevPlayer.charAt(0).charCodeAt(0) * 3;
 
-    let sumX = Human.charAt(0).charCodeAt(0) * 3;
-    let sumY = AI.charAt(0).charCodeAt(0) * 3;
-    sum1 = sum(0, 4, 8, initialArr);
-    sum2 = sum(0, 1, 2, initialArr);
-    sum3 = sum(0, 3, 6, initialArr);
-    sum4 = sum(1, 4, 7, initialArr);
-    sum5 = sum(2, 5, 8, initialArr);
-    sum6 = sum(2, 4, 6, initialArr);
-    sum7 = sum(3, 4, 5, initialArr);
-    sum8 = sum(6, 7, 8, initialArr);
+    sum1 = findSum(0, 4, 8, initialArr);
+    sum2 = findSum(0, 1, 2, initialArr);
+    sum3 = findSum(0, 3, 6, initialArr);
+    sum4 = findSum(1, 4, 7, initialArr);
+    sum5 = findSum(2, 5, 8, initialArr);
+    sum6 = findSum(2, 4, 6, initialArr);
+    sum7 = findSum(3, 4, 5, initialArr);
+    sum8 = findSum(6, 7, 8, initialArr);
 
     if (
-      sumX === sum1 ||
-      sumX === sum2 ||
-      sumX === sum3 ||
-      sumX === sum4 ||
-      sumX === sum5 ||
-      sumX === sum6 ||
-      sumX === sum7 ||
-      sumX === sum8
+      sum === sum1 ||
+      sum === sum2 ||
+      sum === sum3 ||
+      sum === sum4 ||
+      sum === sum5 ||
+      sum === sum6 ||
+      sum === sum7 ||
+      sum === sum8
     ) {
-      setWinner(Human);
-      setShowModal(true);
-      setWins(prev => prev + 1);
-    } else if (
-      sumY === sum1 ||
-      sumY === sum2 ||
-      sumY === sum3 ||
-      sumY === sum4 ||
-      sumY === sum5 ||
-      sumY === sum6 ||
-      sumY === sum7 ||
-      sumY === sum8
-    ) {
-      setWinner(AI);
-      setShowModal(true);
-      setLoses(prev => prev + 1);
+      setWinner(prevPlayer);
+      setShowModal((prev) => !prev);
+      prevPlayer === Human
+        ? setWins((prev) => prev + 1)
+        : setLoses((prev) => prev + 1);
     } else if (turn === 10 && winner === "") {
       setWinner(Draw);
-      setShowModal(true);
-      setTies(prev => prev + 1);
+      setShowModal((prev) => !prev);
+      setTies((prev) => prev + 1);
     }
-  }, [initialArr, turn]);
+  }, [initialArr]);
 
-  const sum = (i: number, j: number, k: number, arr: JSX.Element[]) => {
-    let result: number | string = 0;
-    let element: (string | number)[] = [];
-    let item1: string = arr[i].type.name ?? "";
-    let item2: string = arr[j].type.name ?? "";
-    let item3: string = arr[k].type.name ?? "";
-    element.push(item1, item2, item3);
-
-    element = element.map((item) => {
-      if (item === "ImCross") {
-        item = "X".charCodeAt(0);
-      }
-      if (item === "BsFillRecordCircleFill") {
-        item = "O".charCodeAt(0);
-      }
-      return item;
-    });
-    result = element.reduce((accumulator, item) => {
-      if (typeof item === "number" && typeof accumulator === "number") {
-        accumulator += item;
-      }
-      return accumulator;
-    });
-    if (typeof result === "string") return -1;
+  const findSum = (i: number, j: number, k: number, arr: string[]) => {
+    let result: number = 0;
+    if ((arr[i] !== " " && arr[j] && " ") || (arr[k] && " ")) {
+      let value1 = arr[i].charAt(0).charCodeAt(0);
+      let value2 = arr[j].charAt(0).charCodeAt(0);
+      let value3 = arr[k].charAt(0).charCodeAt(0);
+      result += value1 + value2 + value3;
+    }
     return result;
   };
 
   const handleReset = () => {
     setArr(() => {
-      let arr: JSX.Element[] = new Array(9);
-      arr.fill(<> </>);
+      let arr: string[] = new Array(9);
+      arr.fill(" ");
       return [...arr];
     });
     setTurn(1);
@@ -138,7 +115,10 @@ function App() {
     };
   }
   return (
-    <main className="App grid place-content-center min-h-screen" style={activeStyles}>
+    <main
+      className="App grid place-content-center min-h-screen"
+      style={activeStyles}
+    >
       {/* header element */}
       <header className="grid grid-cols-3 grid-rows-1 place-items-center my-3">
         <div className="pl-2 flex gap-1 my-4 xl:my-3 mr-10">
@@ -149,8 +129,8 @@ function App() {
             <BsFillRecordCircleFill />
           </span>
         </div>
-        <div className="turn container flex gap-2 shadow-sm justify-center align-middle text-sm py-2 rounded-md font-medium mr-4 ml-3 xl:mr-0 xl:ml-0">
-          {turn % 2 ? "X" : "O"}
+        <div className="turn container flex gap-2 shadow-sm justify-center align-middle text-sm py-2 rounded-md font-medium mr-4 ml-3 xl:mx-0">
+          {turn % 2 ? Human : AI /*This term rotates between 0 and 1*/}
           <span className="uppercase text-xsm font-bold tracking-widest leading-[1.7rem]">
             turn
           </span>
@@ -166,11 +146,11 @@ function App() {
       <section className="container grid gap-3 xl:gap-4 grid-cols-3 grid-rows-3 w-80 xl:w-[400px] xl:h-[400px]">
         {initialArr.map((item, index) => {
           let styles = {};
-          if (item.type.name === "ImCross") {
+          if (item === "X") {
             styles = {
               color: "#17BEBB",
             };
-          } else {
+          } else if (item === "O") {
             styles = {
               color: "#FEC601",
             };
@@ -183,7 +163,9 @@ function App() {
               className="h-24 shadow-md text-xxl focus:outline-none rounded-md xl:h-auto input grid place-items-center"
               onClick={handleEntry}
             >
-              {item}
+              {item === " " && <> </>}
+              {item === "X" && <ImCross />}
+              {item === "O" && <BsFillRecordCircleFill />}
             </button>
           );
         })}
@@ -210,12 +192,12 @@ function App() {
             //this will be passed to next round button event handler-> moves to next round
             onNextRound={() => {
               handleReset();
-              setShowModal(prev => !prev);
+              setShowModal((prev) => !prev);
             }}
             //this will be passed to quit button event handler-> everything resets
             onClose={() => {
               handleReset();
-              setShowModal(prev => !prev);
+              setShowModal((prev) => !prev);
               setWins(0);
               setLoses(0);
               setTies(0);
@@ -228,3 +210,17 @@ function App() {
 }
 
 export default App;
+/*
+ * PurgeCSS:
+ * styles
+ * activeStyles
+ * turn
+ * App
+ * input
+ * reset
+ * score
+ * bg-teal-500
+ * bg-amber-500
+ * text-teal-400
+ * text-center
+ */
