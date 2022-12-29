@@ -1,10 +1,13 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { GrPowerReset } from "react-icons/gr";
-import { ImCross } from "react-icons/im";
-import { BsFillRecordCircleFill } from "react-icons/bs";
+
+//components
 import { createPortal } from "react-dom";
 import ModalContent from "./components/ModalContent";
+import Scoreboard from "./components/Scoreboard";
+import TicTacToe from "./components/TicTacToe";
+import Header from "./components/Header";
+
 
 const Human = "X";
 const AI = "O";
@@ -106,7 +109,7 @@ function App() {
     setTurn(1);
     setWinner("");
   };
-  let activeStyles = {};
+  let activeStyles = {};//this style will be applied to main element when the modal is active
   if (showModal) {
     activeStyles = {
       opacity: "0.3",
@@ -120,71 +123,12 @@ function App() {
       style={activeStyles}
     >
       {/* header element */}
-      <header className="grid grid-cols-3 grid-rows-1 place-items-center my-3">
-        <div className="pl-2 flex gap-1 my-4 xl:my-3 mr-10">
-          <span className="text-base xl:text-md text-teal-400">
-            <ImCross />
-          </span>
-          <span className="text-base xl:text-md text-amber-500">
-            <BsFillRecordCircleFill />
-          </span>
-        </div>
-        <div className="turn container flex gap-2 shadow-sm justify-center align-middle text-sm py-2 rounded-md font-medium mr-4 ml-3 xl:mx-0">
-          {turn % 2 ? Human : AI /*This term rotates between 0 and 1*/}
-          <span className="uppercase text-xsm font-bold tracking-widest leading-[1.7rem]">
-            turn
-          </span>
-        </div>
-        <button
-          className="reset w-50 rounded-md p-2 translate-x-7 xl:translate-x-9"
-          onClick={handleReset}
-        >
-          <GrPowerReset />
-        </button>
-      </header>
+      <Header turn={turn} handleReset={handleReset} playerA={Human} playerB={AI} />
       {/* ticTacToe */}
-      <section className="container grid gap-3 xl:gap-4 grid-cols-3 grid-rows-3 w-80 xl:w-[400px] xl:h-[400px]">
-        {initialArr.map((item, index) => {
-          let styles = {};
-          if (item === "X") {
-            styles = {
-              color: "#17BEBB",
-            };
-          } else if (item === "O") {
-            styles = {
-              color: "#FEC601",
-            };
-          }
-          return (
-            <button
-              key={index}
-              style={styles}
-              data-key={index}
-              className="h-24 shadow-md text-xxl focus:outline-none rounded-md xl:h-auto input grid place-items-center"
-              onClick={handleEntry}
-            >
-              {item === " " && <> </>}
-              {item === "X" && <ImCross />}
-              {item === "O" && <BsFillRecordCircleFill />}
-            </button>
-          );
-        })}
-      </section>
+      <TicTacToe initialArr={initialArr} handleEntry={handleEntry} />
       {/* Scoreboard */}
-      <footer className="grid gap-3 grid-cols-3 grid-rows-1 my-6">
-        <div className="grid gap-3 grid-rows-2 text-center font-bold py-2 bg-teal-500 rounded-md score leading-3 text-base pb-3">
-          <h1 className="text-xxsm pt-[0.2rem]">X(You)</h1>
-          {wins}
-        </div>
-        <div className="grid gap-3 grid-rows-2 text-center font-bold py-2 rounded-md reset score leading-3 text-base pb-3">
-          <h1 className="text-xxsm pt-[0.2rem]">Ties</h1>
-          {ties}
-        </div>
-        <div className="grid gap-3 grid-rows-2 text-center font-bold py-2 rounded-md bg-amber-500 score leading-3 text-base pb-3">
-          <h1 className="text-xxsm pt-[0.2rem]">O(CPU)</h1>
-          {loses}
-        </div>
-      </footer>
+      <Scoreboard score={[wins, loses, ties]} />
+      {/* modal */}
       {showModal &&
         createPortal(
           <ModalContent
