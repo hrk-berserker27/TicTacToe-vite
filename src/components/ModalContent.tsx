@@ -23,7 +23,7 @@ function ModalContent({ winner, onNextRound, onClose }: ModalProps) {
                     Cpu won!
                 </p>
             )}
-            {winner === "" && <p>It's a draw!</p>}
+            {winner === "" && <p className="text-slate-400 text-xxsm leading-3 uppercase my-1 tracking-wide font-semibold">It's a draw!</p>}
             {winner === "X" && (
                 <p className="text-teal-300 flex gap-3 place-items-center pb-3 uppercase text-sm font-medium tracking-wide">
                     <ImCross className="text-md" /> takes the round
