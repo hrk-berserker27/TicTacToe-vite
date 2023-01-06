@@ -28,3 +28,12 @@
 body {
   position: relative;
 }
+.clip-circle {
+  clip-path: ellipse(350px 740px at 100% 50%);
+}
+
+@media screen and (width <= 700px) {
+  .clip-circle {
+    clip-path: ellipse(100% 100% at 100% 80%);
+  }
+}
