@@ -36,12 +36,12 @@ function Settings({ onSetMode, mode }: settingProps) {
             {isEditing &&
                 createPortal(
                     <section className="absolute inset-0 bg-[rgba(0,0,0,0.07)] backdrop-blur-md clip-circle flex flex-col flex-1 justify-center gap-[2.5rem] sm:items-end">
-                        <h1 className="text-xl w-full text-center text-slate-300 sm:text-right sm:pr-8">
+                        <h1 className="text-xl w-full text-center text-slate-300 sm:text-right sm:pr-8 font-family-Fredoka-One">
                             Choose Mode
                         </h1>
-                        <div className="flex flex-col gap-5 justify-center items-center sm:justify-end sm:pr-8">
+                        <div className="flex flex-col gap-5 justify-center items-center sm:justify-end sm:pr-8 font-family-Quantico">
                             <button
-                                className="px-6 py-2 rounded-md bg-slate-500 text-sm font-extralight hover:scale-110"
+                                className="px-6 py-2 rounded-md bg-slate-500 text-sm hover:scale-110"
                                 style={styleButton1}
                                 onClick={() => {
                                     onSetMode("PvP");
@@ -50,7 +50,7 @@ function Settings({ onSetMode, mode }: settingProps) {
                                 Player<img alt="battle-logo" className="inline-block w-4 h-4 mx-2" src={"./battle.png"} />Player
                             </button>
                             <button
-                                className="px-6 py-2 rounded-md bg-slate-500 text-sm font-extralight hover:scale-110"
+                                className="px-6 py-2 rounded-md bg-slate-500 text-sm hover:scale-110"
                                 style={styleButton2}
                                 onClick={() => {
                                     onSetMode("PvB");
