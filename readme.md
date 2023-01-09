@@ -20,9 +20,9 @@ This is one of my side projects which I had built to practice my frontend skills
 
  ### The challenge
 
-  #### Initial challenges:
+  1. Initial challenges:
 
-   ##### Users should be able to
+   a) Users should be able to
 
     - View the optimal layout for the site depending on their device's screen size
 
@@ -30,23 +30,23 @@ This is one of my side projects which I had built to practice my frontend skills
 
     - Enter the input(X/O) in the main game board with just a click on the grid elements
 
-   ##### Important game features
+   b) Important game features
 
     - Maintaining a scoreboard for the win for X, win for O and draw between X and O.
 
     - Find a winner and display an appropriate modal for different game endings like the win for X, win for O or a draw with slight variations.
 
-    ###### Instant Quit feature
+    i) Instant Quit feature
 
      - The modal would have a feature for resetting the board and scoreboard.
 
-    ###### Round feature in the game
+    ii) Round feature in the game
 
      - Preserving W/L/D records for players in between rounds.
 
-  #### Challenges faced during the new version of the game
+  2. Challenges faced during the new version of the game
 
-   ##### Version - 1
+   a) Version - 1
 
     - Adjust the game mode from PvP mode to PvBot and vice versa.
 
@@ -56,7 +56,7 @@ This is one of my side projects which I had built to practice my frontend skills
 
     - Improving the smartness of the AI so that it looks to respond with moves that result in a draw, in fewer moves, in the case where there is no chance of winning.
 
-   ##### Version - 2
+   b) Version - 2
 
     - Improving the layout of the modal for the game mode.
 
