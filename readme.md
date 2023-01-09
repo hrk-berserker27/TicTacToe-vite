@@ -64,37 +64,35 @@ This is one of my side projects which I had built to practice my frontend skills
 
 ### Screenshot
 
-#### Screenshot for the desktop version
-
-##### Desktop normal view 
+> ##### Desktop normal view 
 
 ![](./public/screenshot-desktop.png)
 
-##### Mobile normal view
+> ##### Mobile normal view
 
 ![](./public/screenshot-mobile.png)
 
-##### Mobile feature overlay
+> ##### Mobile feature overlay
 
 ![](./public/mobile-overlay.png)
 
-##### Desktop feature overlay
+> ##### Desktop feature overlay
 
 ![](./public/desktop-overlay.png)
 
-##### Medium screen feature overlay
+> ##### Medium screen feature overlay
 
 ![](./public/medium-sized-screen-overlay.png)
 
-##### Draw
+> ##### Draw
 
 ![](./public/draw.png)
 
-##### X won!
+> ##### X won!
 
 ![](./public/X%20won!.png)
 
-##### O won!
+> ##### O won!
 
 ![](./public/O%20won!.png)
 
@@ -112,6 +110,7 @@ This is one of my side projects which I had built to practice my frontend skills
 - [React][React beta docs] - JS library
 - [TypeScript][Typescript docs]
 
+
 > ### What I learned
 >
 > - This is my project which I have built using React, Vite and Typescript. 
@@ -125,6 +124,7 @@ This is one of my side projects which I had built to practice my frontend skills
 > - Learned about minimax algorithm and alpha-beta pruning.
 >
 > - Learned about react portals and how they work.
+
 
 #### Code snippet which I am proud of 
 
@@ -189,8 +189,9 @@ function minimax(
 > - I liked how easy it became to make my app responsive, using **Tailwind CSS** and would like to improve the way I use it.
 >
 > - Reduce my development time on styling and focus more on the logic part of the application.
-
+>
 > - I would like to use different testing libraries such as **Jest** or **react testing library** in my future projects as I struggled with manually testing my app.
+
 
 ### Useful resources
 
