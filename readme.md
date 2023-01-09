@@ -112,19 +112,19 @@ This is one of my side projects which I had built to practice my frontend skills
 - [React][React beta docs] - JS library
 - [TypeScript][Typescript docs]
 
-### What I learned
-
-- This is my project which I have built using React, Vite and Typescript. 
-
-- I learned various typescript usages with react.
-
-- Improved my knowledge about different react hooks such as use-state and use-effect.
-
-- Improved my understanding of state and props in react.
-
-- Learned about minimax algorithm and alpha-beta pruning.
-
-- Learned about react portals and how they work.
+> ### What I learned
+>
+> - This is my project which I have built using React, Vite and Typescript. 
+>
+> - I learned various typescript usages with react.
+>
+> - Improved my knowledge about different react hooks such as use-state and use-effect.
+>
+> - Improved my understanding of state and props in react.
+>
+> - Learned about minimax algorithm and alpha-beta pruning.
+>
+> - Learned about react portals and how they work.
 
 #### Code snippet which I am proud of 
 
@@ -184,13 +184,13 @@ function minimax(
 }
 ```
 
-### Continued Development
+> ### Continued Development
+>
+> - I liked how easy it became to make my app responsive, using **Tailwind CSS** and would like to improve the way I use it.
+>
+> - Reduce my development time on styling and focus more on the logic part of the application.
 
-- I liked how easy it became to make my app responsive, using Tailwind CSS and would like to improve the way I use it.
-
-- Reduce my development time on styling and focus more on the logic part of the application.
-
-- I would like to use different testing libraries such as Jest or react testing library in my future projects as I struggled with manually testing my app.
+> - I would like to use different testing libraries such as **Jest** or **react testing library** in my future projects as I struggled with manually testing my app.
 
 ### Useful resources
 
