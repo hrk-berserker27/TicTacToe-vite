@@ -4,17 +4,17 @@ This is one of my side projects which I had built to practice my frontend skills
 
 ## Table of contents
 
--[Overview](#overview)
+- [Overview](#overview)
     + [The challenge](#the-challenge)
     + [Screenshot](#screenshot)
     + [Links](#links) 
--[My process](#my-process)
+- [My process](#my-process)
     + [Build with](#built-with)
     + [What I learned](#what-i-learned)
     + [Continued development](#continued-development)
     + [Useful resources](#useful-resources) 
--[Author](#author) 
--[Acknowledgements](#acknowledgements)
+- [Author](#author) 
+- [Acknowledgements](#acknowledgements)
 
 ## Overview
 
